@@ -1,0 +1,72 @@
+# @package _global_
+
+defaults:
+  - alg: iw
+
+root_name: test
+name: ${root_name}_${alg.sweep_name}
+
+path: YOUR_PATH 
+
+seed: 0
+greedy_eval: true 
+epochs: 50
+batch_size: 128
+model_save_freq: 1000
+model_save_dir: models
+model_save_path: ${path}/${model_save_dir}
+logging: true 
+log_dir: cox_logs
+log_path: ${path}/${log_dir}
+
+data:
+  data_type: synth
+  context_dim: ${data.d}
+  num_actions: ${data.K}
+  n: 100
+  K: 2
+  nbad: 0 
+  d: 10
+  gamma: 0.0
+  epsilon: 0.0
+  seed: 0
+  action_seed: 0 
+  root_path: ${path}
+  subpath: data/synth/n=${data.n}/d=${data.d}/K=${data.K}/nbad=${data.nbad}/gamma=${data.gamma}/epsilon=${data.epsilon}/seed=${data.seed}/action_seed=${data.action_seed}
+  batch_size: ${batch_size}
+  train_on_partition: false
+  partition: 1
+  action_dir: blbf
+
+alg:
+    model_type: mlp
+    n_hidden: 512
+    data_type: ${data.data_type}
+    context_dim: ${data.context_dim}
+    num_actions: ${data.num_actions}
+
+    optim_type: sgd
+    lr: 0.1
+    weight_decay: 0 # 0.0001
+    momentum: 0.9
+    use_lr_sched: true 
+
+hydra:
+  #output_subdir: null
+  run:
+    dir: ./output/${root_name}_${hydra.job.override_dirname}
+  sweep:
+    dir: ./output/${root_name}_${hydra.job.override_dirname}
+    subdir: ${hydra.job.num}
+  job:
+    config:
+      override_dirname:
+        exclude_keys:
+          - root_name
+          - path
+          - model_save_dir
+          - log_dir
+          - data.path
+          - data.train_on_partition
+          - hydra/launcher
+

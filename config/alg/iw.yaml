@@ -1,0 +1,28 @@
+# @package alg
+
+_target_: alg.iw.IW
+name: iw
+# sweep_name: alg=${alg.name}_offset=${alg.offset}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
+# no baseline, with action seed
+sweep_name: alg=${alg.name}_lr=${alg.lr}_n=${data.n}_d=${data.d}_K=${data.K}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_actionseed=${data.action_seed}
+
+# with baseline 
+# alg=${alg.name}_baselinetype=${alg.baseline.type}_zeta=${alg.baseline.zeta}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
+
+# cifar
+# sweep_name: alg=${alg.name}_model=${alg.model_type}_actions=${data.action_dir}_lr=${alg.lr}_wd=${alg.weight_decay}_offset=${alg.offset}
+
+clip: 1e-4 
+clip_type: strehl
+offset: 0.0
+
+use_baseline: false
+baseline:
+  type: betaquantile
+  zeta: 0.5
+  arch: mlp 
+  n_hidden: 512
+  context_dim: ${alg.context_dim}
+  num_actions: ${alg.num_actions}
+  path1: ${path}/baseline_models/baseline_sweep_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_partition=0_100.pt
+  path2: ${path}/baseline_models/baseline_sweep_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_partition=1_100.pt

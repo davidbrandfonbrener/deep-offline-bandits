@@ -1,0 +1,5 @@
+# @package alg
+
+_target_: alg.q.QLearning
+name: baseline_q
+sweep_name: n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_partition=${data.partition}

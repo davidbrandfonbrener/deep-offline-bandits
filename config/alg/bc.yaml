@@ -1,0 +1,5 @@
+
+alg:
+  _target_: alg.bc.BC
+  name: bc
+  train_Q: false

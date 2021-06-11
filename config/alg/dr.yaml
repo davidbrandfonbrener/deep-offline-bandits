@@ -1,0 +1,17 @@
+# @package alg
+
+_target_: alg.dr.DR
+name: dr
+sweep_name: alg=${alg.name}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
+
+clip: 1e-3
+
+use_baseline: true
+baseline:
+  type: q
+  arch: mlp 
+  n_hidden: 512
+  context_dim: ${alg.context_dim}
+  num_actions: ${alg.num_actions}
+  path1: ${path}/baseline_models/baseline_sweep_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_partition=0_100.pt
+  path2: ${path}/baseline_models/baseline_sweep_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_partition=1_100.pt
