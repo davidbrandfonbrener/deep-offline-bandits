@@ -1,12 +1,12 @@
 import torch
 import torch.nn.functional as F
 
-from meta_algorithm import MetaAlgorithm
+from bandit_learner import BanditLearner
 from models import Policy
 
 from baseline import load_baseline
 
-class DR(MetaAlgorithm):
+class DR(BanditLearner):
     """docstring for DR."""
 
     def __init__(self,

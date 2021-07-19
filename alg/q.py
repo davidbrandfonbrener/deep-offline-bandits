@@ -1,11 +1,11 @@
 import torch
 import torch.nn.functional as F
 
-from meta_algorithm import MetaAlgorithm
+from bandit_learner import BanditLearner
 from utils.policy_utils import greedy_policy
 from models import Q
 
-class QLearning(MetaAlgorithm):
+class QLearning(BanditLearner):
     """docstring for QLearning."""
 
     def __init__(self, offset = 0.0,

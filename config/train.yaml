@@ -6,7 +6,7 @@ defaults:
 root_name: test
 name: ${root_name}_${alg.sweep_name}
 
-path: YOUR_PATH 
+path:   # your path here 
 
 seed: 0
 greedy_eval: true 

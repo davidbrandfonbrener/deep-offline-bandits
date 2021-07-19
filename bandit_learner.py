@@ -15,7 +15,7 @@ def set_lr(optimizer, lr):
         param_group['lr'] = lr
     return optimizer
 
-class MetaAlgorithm():
+class BanditLearner():
 
     def __init__(self, context_dim, num_actions,
                     model_type,

@@ -1,10 +1,10 @@
 import torch
 import torch.nn.functional as F
 
-from meta_algorithm import MetaAlgorithm
+from bandit_learner import BanditLearner
 from models import Policy
 
-class FullFeedback(MetaAlgorithm):
+class FullFeedback(BanditLearner):
     """docstring for FullFeedback."""
 
     def __init__(self, **kwargs):
