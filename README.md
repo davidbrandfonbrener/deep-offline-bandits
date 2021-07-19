@@ -8,7 +8,7 @@ This is the codebase accompanying our ICML 2021 paper [Offline Contextual Bandit
 
 - Python 3.7
 - Pytorch 1.7
-- [Hydra] (https://hydra.cc/) 1.0
+- [Hydra](https://hydra.cc/) 1.0
 - [Cox](https://cox.readthedocs.io/en/latest/) 
 
 ---
