@@ -2,11 +2,11 @@
 
 _target_: alg.iw.IW
 name: iw
-# sweep_name: alg=${alg.name}_offset=${alg.offset}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
-# no baseline, with action seed
+
+# no baseline, synthetic
 sweep_name: alg=${alg.name}_lr=${alg.lr}_n=${data.n}_d=${data.d}_K=${data.K}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_actionseed=${data.action_seed}
 
-# with baseline 
+# with baseline, synthetic
 # alg=${alg.name}_baselinetype=${alg.baseline.type}_zeta=${alg.baseline.zeta}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
 
 # cifar
@@ -18,8 +18,7 @@ offset: 0.0
 
 use_baseline: false
 baseline:
-  type: betaquantile
-  zeta: 0.5
+  type: vpi
   arch: mlp 
   n_hidden: 512
   context_dim: ${alg.context_dim}

@@ -2,6 +2,8 @@
 
 _target_: alg.dr.DR
 name: dr
+
+# synthetic
 sweep_name: alg=${alg.name}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
 
 clip: 1e-3

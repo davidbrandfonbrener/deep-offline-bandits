@@ -54,7 +54,6 @@ class BanditLearner():
                                         weight_decay=weight_decay)
 
         self.lr_sched = [lr / 10.0] + [lr] * 199 + [lr / 10.0] * 200 + [lr / 100.0] * 600
-        #self.lr_sched = [lr] * 500 + [lr / 10.0] * 600
 
     def objective(self, Q, log_pi, context, action, reward, propensity, label):
         raise NotImplementedError
@@ -92,12 +91,6 @@ class BanditLearner():
             # take step with clipped grad
             self.optimizer.zero_grad()
             loss.backward()
-            # total_norm = 0
-            # for p in self.policy.parameters():
-            #     param_norm = p.grad.data.norm(2)
-            #     total_norm += param_norm.item() ** 2
-            # total_norm = total_norm ** (1. / 2)
-            # print(total_norm)
             torch.nn.utils.clip_grad_norm_(self.model.parameters(), 10.0)
             self.optimizer.step()
 

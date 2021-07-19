@@ -2,11 +2,10 @@
 
 _target_: alg.q.QLearning
 name: q
-# no action seed
-#sweep_name: alg=${alg.name}_n=${data.n}_d=${data.d}_K=${data.K}_nbad=${data.nbad}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}
-# add action seed 
-# todo: add n_hidden??
+
+# synthetic
 sweep_name: alg=${alg.name}_lr=${alg.lr}_n=${data.n}_d=${data.d}_K=${data.K}_gamma=${data.gamma}_epsilon=${data.epsilon}_dataseed=${data.seed}_actionseed=${data.action_seed}
+
 # cifar sweep
 # sweep_name: alg=${alg.name}_model=${alg.model_type}_actions=${data.action_dir}_lr=${alg.lr}_wd=${alg.weight_decay}
 
