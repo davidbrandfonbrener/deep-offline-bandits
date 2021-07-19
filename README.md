@@ -15,7 +15,7 @@ This is the codebase accompanying our ICML 2021 paper [Offline Contextual Bandit
 
 ## Usage
 
-To run `train.py`, you just need to put your path to the `deep-offline-bandits` directory into the `config/train.yaml` file as the `path` variable. Then you can run `python train.py` and overwrite any of the parameters in the config file using hydra. For example, to run value-based learning instead of importance-weighted policy-based learning, you can run `python train.py alg=q`.
+To run `train.py`, you just need to put your path to the `deep-offline-bandits` directory into the `config/train.yaml` file as the `path` variable. Then you can run `python train.py` and overwrite any of the parameters in the config file using hydra. For example, to run value-based learning you can run `python train.py alg=q` and to run importance-weighted policy-based learning you can run `python train.py alg=iw`.
 
 The `sweeps/` directory contains files to launch slurm sweeps that we ran for the paper. Results of our sweeps are found in the `cox_logs/` directory. 
 
